@@ -2,7 +2,7 @@ package beautify_brackets
 
 import (
 	"errors"
-	"fmt"
+	// "fmt"
 	"strings"
 )
 
@@ -22,7 +22,7 @@ func getMatchingBracket(openBracket string) (string, error) {
 
 func getBracketedText(text string) (int, error) {
 	//checking required intial conditions
-	fmt.Println("inside getBrackedText")
+	// fmt.Println("inside getBrackedText")
 	if len(text) < 1 {
 		return -1, errors.New("Empty string")
 	}
@@ -40,7 +40,7 @@ func getBracketedText(text string) (int, error) {
 	i_index := -1
 	m_index := -1
 	for inbetween_bracket {
-		fmt.Println(text)
+		// fmt.Println(text)
 		m_index = strings.Index(text, matching_bracket)
 		if m_index == -1 {
 			return -1, errors.New("No matching bracket in text")
@@ -60,12 +60,12 @@ func getBracketedText(text string) (int, error) {
 		}
 
 	}
-	fmt.Println(text, m_index)
+	// fmt.Println(text, m_index)
 	return m_index, nil
 }
 
 func indentLevel(text string) string {
-	fmt.Println("inside indent")
+	// fmt.Println("inside indent")
 	n_split := strings.Split(text, "\n")
 
 	for i, s := range n_split {
@@ -75,7 +75,7 @@ func indentLevel(text string) string {
 }
 
 func beautifyBrackededText(text string) string {
-	fmt.Println(text, "in beautify")
+	// fmt.Println(text, "in beautify")
 
 	if len(text) < 3 {
 		return text
@@ -94,11 +94,11 @@ func beautifyBrackededText(text string) string {
 	}
 
 	pre_bracket_text := text[:first_bracket_index]
-	fmt.Println("pre_bracket_text", pre_bracket_text)
+	// fmt.Println("pre_bracket_text", pre_bracket_text)
 	bracketed_text := text[first_bracket_index : closing_bracket_index+1+len(pre_bracket_text)]
-	fmt.Println("bracketed_text", bracketed_text)
+	// fmt.Println("bracketed_text", bracketed_text)
 	remainder := text[closing_bracket_index+1+len(pre_bracket_text) : len(text)]
-	fmt.Println("remainder", remainder)
+	// fmt.Println("remainder", remainder)
 
 	inside := beautifyBrackededText(bracketed_text[1 : len(bracketed_text)-1])
 	fixed_text := bracketed_text[0:1] + "\n" + indentLevel(inside) + "\n" + bracketed_text[len(bracketed_text)-1:len(bracketed_text)]
@@ -106,7 +106,7 @@ func beautifyBrackededText(text string) string {
 	remainder = beautifyBrackededText(remainder)
 	output := pre_bracket_text + fixed_text + remainder
 
-	fmt.Println("output", output)
+	// fmt.Println("output", output)
 
 	return output
 }

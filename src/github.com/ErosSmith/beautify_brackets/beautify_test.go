@@ -85,20 +85,19 @@ func TestIndentLevel(t *testing.T) {
 }
 
 func TestBeatifyBracketedText(t *testing.T) {
-	// text := "((()))"
-	// t.Log(text)
-	// i_text := beautifyBrackededText(text)
-	// t.Log(i_text)
-
-	// text = "[((()))(())]"
-	// t.Log(text)
-	// i_text = beautifyBrackededText(text)
-	// t.Log(i_text)
-
-	text := "[((()))sup(hello(hi how are you))]"
-	// text := "sup(hello(hi how are you))"
+	text := "((()))"
 	t.Log(text)
 	i_text := beautifyBrackededText(text)
+	t.Log(i_text)
+
+	text = "[((()))(())]"
+	t.Log(text)
+	i_text = beautifyBrackededText(text)
+	t.Log(i_text)
+
+	text = "[((()))sup(hello(hi how are you))]"
+	t.Log(text)
+	i_text = beautifyBrackededText(text)
 	t.Log(i_text)
 
 }
